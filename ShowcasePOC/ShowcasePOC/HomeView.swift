@@ -26,7 +26,7 @@ struct HomeView: View {
   var body: some View {
     ZStack {
       TabView {
-        Tab("Map", systemImage: "macbook.and.iphone") {
+        Tab(LocalizationManager.shared.localizedString(forKey: "map"), systemImage: "macbook.and.iphone") {
           GeometryReader {
             let safeArea = $0.safeAreaInsets
             
@@ -47,24 +47,24 @@ struct HomeView: View {
           .toolbarBackground(.ultraThinMaterial, for: .tabBar)
         }
         
-        Tab("Items", systemImage: "square.grid.2x2.fill") {
-          Text("Items")
+        Tab(LocalizationManager.shared.localizedString(forKey: "items"), systemImage: "square.grid.2x2.fill") {
+          Text(LocalizationManager.shared.localizedString(forKey: "items"))
         }
         
-        Tab("Profile", systemImage: "person.circle.fill") {
-          Text("Profile")
+        Tab(LocalizationManager.shared.localizedString(forKey: "profile"), systemImage: "person.circle.fill") {
+          Text(LocalizationManager.shared.localizedString(forKey: "profile"))
         }
       }
       .overlay(alignment: .bottom) {
         HStack(spacing: 0) {
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 6, title: "My Map", subtitle: "Chekout your locations and routes", cornerRadius: 10, style: .continuous)
+            .showCase(order: 6, title: LocalizationManager.shared.localizedString(forKey: "my_map"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_routes"), cornerRadius: 10, style: .continuous)
             .frame(maxWidth: .infinity)
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 7, title: "Location Enabled Tag's", subtitle: "Checkout Location Enabled Tags", cornerRadius: 10, style: .continuous)
+            .showCase(order: 7, title: LocalizationManager.shared.localizedString(forKey: "location_enable"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_location_tag"), cornerRadius: 10, style: .continuous)
             .frame(maxWidth: .infinity)
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 5, title: "Personal Info", subtitle: "Check your profile here.", cornerRadius: 10, style: .continuous)
+            .showCase(order: 5, title: LocalizationManager.shared.localizedString(forKey: "personal_info"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_profile"), cornerRadius: 10, style: .continuous)
             .frame(maxWidth: .infinity)
         }
       }

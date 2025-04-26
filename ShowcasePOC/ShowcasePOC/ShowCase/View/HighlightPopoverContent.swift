@@ -31,7 +31,7 @@ struct HighlightPopoverContent: View {
         Button {
           onSkip()
         } label: {
-          Text("Skip").applyCommonStyle(font: .custom("Roboto-Regular", size: 11.0), frameWidth: nil)
+          Text(LocalizationManager.shared.localizedString(forKey: "skip")).applyCommonStyle(font: .custom("Roboto-Regular", size: 11.0), frameWidth: nil)
             .foregroundStyle(.primary).frame(height: 12.0, alignment: .center)
         }
         Spacer()

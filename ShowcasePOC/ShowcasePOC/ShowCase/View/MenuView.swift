@@ -28,14 +28,14 @@ struct MenuView: View {
             Divider()
             
             VStack(alignment: .leading) {
-              Label("My account", systemImage: "person")
+              Label(LocalizationManager.shared.localizedString(forKey: "my_account"), systemImage: "person")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
-              Label("Charging history", systemImage: "ev.charger")
+              Label(LocalizationManager.shared.localizedString(forKey: "charging_history"), systemImage: "ev.charger")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
-              Label("My vehicle", systemImage: "car")
+              Label(LocalizationManager.shared.localizedString(forKey: "my_vehicle"), systemImage: "car")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
-                .showCase(order: 9, title: "My vehicle", subtitle: "Add your vehicle, and the app will automatically filter the map based on your car, van, or truck.", cornerRadius: 0, style: .continuous)
-              Label("My Fuel & Charge cards", systemImage: "person.crop.square.filled.and.at.rectangle.fill")
+                .showCase(order: 9, title: LocalizationManager.shared.localizedString(forKey: "my_vehicle"), subtitle: LocalizationManager.shared.localizedString(forKey: "add_your_vehicle"), cornerRadius: 0, style: .continuous)
+              Label(LocalizationManager.shared.localizedString(forKey: "my_fuel_and_charge_cards"), systemImage: "person.crop.square.filled.and.at.rectangle.fill")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
             }
           }
