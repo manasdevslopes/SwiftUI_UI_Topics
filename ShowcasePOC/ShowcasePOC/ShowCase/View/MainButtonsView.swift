@@ -26,6 +26,7 @@ struct MainButtonsView: View {
         MainButtonView(sfSymbol: "line.3.horizontal.decrease", action: { })
           .showCase(order: 1, title: LocalizationManager.shared.localizedString(forKey: "filter_your_search"), subtitle: LocalizationManager.shared.localizedString(forKey: "quickly_find_charge_points"), cornerRadius: 45, style: .continuous)
       }
+      .padding(.top, 18)
       .padding(.bottom, 16)
       
       HStack {
