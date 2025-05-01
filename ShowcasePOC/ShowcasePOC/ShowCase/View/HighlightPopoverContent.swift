@@ -52,7 +52,7 @@ struct HighlightPopoverContent: View {
 }
 
 extension View {
-  func applyCommonStyle(font: Font, frameWidth: CGFloat?, alignment: Alignment = .center) -> some View {
+  func applyCommonStyle(font: Font, frameWidth: CGFloat? = nil, alignment: Alignment = .center) -> some View {
     self.font(font).multilineTextAlignment(.center).frame(width: frameWidth, alignment: alignment)
   }
 }

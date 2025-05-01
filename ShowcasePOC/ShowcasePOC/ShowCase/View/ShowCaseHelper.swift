@@ -56,6 +56,10 @@ struct ShowCaseRoot: ViewModifier {
       let highlightRect = proxy[highlight.anchor]
       let safeArea = proxy.safeAreaInsets
       
+      // TODO: - Try to adapt Skip Button clickable in future
+      /*OverlaySkipButton(showView: $showView, onFinished: onFinished).zIndex(1)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)*/
+      
       Rectangle().fill(.black.opacity(0.6))
         .reverseMask {
           Rectangle()
