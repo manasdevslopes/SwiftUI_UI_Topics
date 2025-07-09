@@ -12,17 +12,6 @@
       },
       "shouldTranslate" : false
     },
-    "%lld/10" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld/10"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
     "charging_history" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -36,6 +25,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Charging history"
+          }
+        }
+      }
+    },
+    "finish" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finish"
           }
         }
       }
@@ -159,8 +165,22 @@
         }
       }
     },
-    "Skip tutorial" : {
-
+    "skip_tutorial" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutorial überspringen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip tutorial"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

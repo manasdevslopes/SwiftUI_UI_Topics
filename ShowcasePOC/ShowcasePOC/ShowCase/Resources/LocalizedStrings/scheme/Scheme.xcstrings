@@ -1,126 +1,24 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "account_management" : {
+    "tutorial_tooltip_step_1_count" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kontoführung"
+            "value" : "1/10"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Account Management"
+            "value" : "1/10"
           }
         }
       }
     },
-    "add_your_vehicle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fügen Sie Ihr Fahrzeug hinzu, und die App filtert die Karte automatisch nach Ihrem Pkw, Transporter oder Lkw."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add your vehicle, and the app will automatically filter the map based on your car, van, or truck."
-          }
-        }
-      }
-    },
-    "charging_or_fueling" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aufladen oder Betanken"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Charging or Fueling"
-          }
-        }
-      }
-    },
-    "check_location_tag" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Checkout Standort Aktivierte Tags"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Checkout Location Enabled Tags"
-          }
-        }
-      }
-    },
-    "check_map_legend" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tippen Sie hier, um die Kartenlegenden zu sehen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap here to see Map Legends"
-          }
-        }
-      }
-    },
-    "check_profile" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Prüfen Sie Ihr Profil hier."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check your profile here."
-          }
-        }
-      }
-    },
-    "check_routes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Überprüfen Sie Ihre Standorte und Routen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chekout your locations and routes"
-          }
-        }
-      }
-    },
-    "choose_btw_charging_or_fueling" : {
+    "tutorial_tooltip_step_1_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -137,143 +35,41 @@
         }
       }
     },
-    "fav" : {
+    "tutorial_tooltip_step_1_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favoriten"
+            "value" : "Aufladen oder Betanken"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Favorites"
+            "value" : "Charging or Fueling"
           }
         }
       }
     },
-    "fav_stations" : {
+    "tutorial_tooltip_step_2_count" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tippen Sie hier, um Ihren Lieblingssender zu sehen"
+            "value" : "2/10"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tap here to see your favorites station"
+            "value" : "2/10"
           }
         }
       }
     },
-    "filter_your_search" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filtern Sie Ihre Suche"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filter your search"
-          }
-        }
-      }
-    },
-    "location_enable" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Standort Aktivierte Tag's"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Location Enabled Tag's"
-          }
-        }
-      }
-    },
-    "map_legends" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Karte Legenden"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Map Legends"
-          }
-        }
-      }
-    },
-    "my_map" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Meine Karte"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My Map"
-          }
-        }
-      }
-    },
-    "my_vehicle" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mein Fahrzeug"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "My vehicle"
-          }
-        }
-      }
-    },
-    "personal_info" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Persönliche Informationen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personal Info"
-          }
-        }
-      }
-    },
-    "quickly_find_charge_points" : {
+    "tutorial_tooltip_step_2_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -290,7 +86,41 @@
         }
       }
     },
-    "scan_qr_code" : {
+    "tutorial_tooltip_step_2_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filtern Sie Ihre Suche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter your search"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_3_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_3_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -307,7 +137,7 @@
         }
       }
     },
-    "scan_to_start_charging" : {
+    "tutorial_tooltip_step_3_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -324,7 +154,279 @@
         }
       }
     },
-    "to_manage_user_data" : {
+    "tutorial_tooltip_step_4_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_4_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie hier, um Ihren Lieblingssender zu sehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to see your favorites station"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_4_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favoriten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Favorites"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_5_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_5_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tippen Sie hier, um die Kartenlegenden zu sehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap here to see Map Legends"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_5_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Karte Legenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Map Legends"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_6_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_6_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfen Sie Ihr Profil hier."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your profile here."
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_6_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Persönliche Informationen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Info"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_7_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_7_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Überprüfen Sie Ihre Standorte und Routen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chekout your locations and routes"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_7_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Karte"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Map"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_8_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_8_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checkout Standort Aktivierte Tags"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checkout Location Enabled Tags"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_8_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standort Aktivierte Tag's"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location Enabled Tag's"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_9_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_9_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "de" : {
@@ -337,6 +439,74 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tap here to manage your card, view your charging history, or update your account"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_9_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontoführung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Management"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_10_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10/10"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10/10"
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_10_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fügen Sie Ihr Fahrzeug hinzu, und die App filtert die Karte automatisch nach Ihrem Pkw, Transporter oder Lkw."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your vehicle, and the app will automatically filter the map based on your car, van, or truck."
+          }
+        }
+      }
+    },
+    "tutorial_tooltip_step_10_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mein Fahrzeug"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My vehicle"
           }
         }
       }

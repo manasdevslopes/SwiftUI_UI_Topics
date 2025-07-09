@@ -58,13 +58,13 @@ struct HomeView: View {
       .overlay(alignment: .bottom) {
         HStack(spacing: 0) {
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 6, title: LocalizationManager.shared.localizedString(forKey: "my_map"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_routes"), cornerRadius: 10, style: .continuous)
+            .showCase(step: .step7, cornerRadius: 10)
             .frame(maxWidth: .infinity)
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 7, title: LocalizationManager.shared.localizedString(forKey: "location_enable"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_location_tag"), cornerRadius: 10, style: .continuous)
+            .showCase(step: .step8, cornerRadius: 10)
             .frame(maxWidth: .infinity)
           Circle().foregroundStyle(.clear).frame(width: 45, height: 45)
-            .showCase(order: 5, title: LocalizationManager.shared.localizedString(forKey: "personal_info"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_profile"), cornerRadius: 10, style: .continuous)
+            .showCase(step: .step6, cornerRadius: 10)
             .frame(maxWidth: .infinity)
         }
       }

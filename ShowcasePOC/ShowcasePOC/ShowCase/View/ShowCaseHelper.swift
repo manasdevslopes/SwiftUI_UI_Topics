@@ -18,7 +18,7 @@ struct ShowCaseRoot: ViewModifier {
   
   // View Properties
   @State private var highlightOrder: [Int] = []
-  @State private var currentHighlight: Int = 0
+  @State private var currentHighlight: TutorialStep = .step1
   @State private var showView: Bool = true
   
   // Popover
@@ -36,13 +36,10 @@ struct ShowCaseRoot: ViewModifier {
         highlightOrder = Array(value.keys).sorted()
       }
       .overlayPreferenceValue(HighlightAnchorKey.self) { preferences in
-        if highlightOrder.indices.contains(currentHighlight), showHighlights, showView {
-          if let highlight = preferences[highlightOrder[currentHighlight]] {
-            if menuOpened && currentHighlight == 8 {
+        if highlightOrder.contains(currentHighlight.rawValue), showHighlights, showView {
+          if let highlight = preferences[currentHighlight.rawValue] {
+//            if menuOpened && currentHighlight == 8 {
               HighlightView(highlight)
-            } else {
-              HighlightView(highlight)
-            }
           }
         }
       }
@@ -75,7 +72,7 @@ struct ShowCaseRoot: ViewModifier {
         .onAppear { showTitle = true }
         .onTapGesture { showTitle.toggle() }
         .onChange(of: currentHighlight) { oldValue, newValue in
-          if newValue == 9 {
+          if newValue == .step10 {
             toggleShowTitle(withDelay: 0.1, to: false)
             toggleShowTitle(withDelay: 0.5, to: true)
           }
@@ -89,9 +86,10 @@ struct ShowCaseRoot: ViewModifier {
           HighlightPopoverContent(highlight: highlight) {
             print("Skipped")
             showView = false
+            centeredMap()
             onFinished()
           } onNext: {
-            if currentHighlight == 8 {
+            if currentHighlight == .step9 {
               DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                 primeViewModel.showMenu()
                 isMenuShowcaseComplete = true
@@ -99,16 +97,20 @@ struct ShowCaseRoot: ViewModifier {
               }
             }
             
-            if currentHighlight >= highlightOrder.count - 1 && isMenuShowcaseComplete {
+            if currentHighlight.rawValue >= highlightOrder.count - 1 && isMenuShowcaseComplete {
               /// Hiding the highlight view, as it is the last one.
               withAnimation(.easeInOut(duration: 0.25)) {
                 showView = false
+                primeViewModel.hideMenu()
+                centeredMap()
                 onFinished()
               }
             } else {
               /// Moving to Next Highlight
               withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 0.7, blendDuration: 0.7)) {
-                currentHighlight += 1
+                if let next = TutorialStep(rawValue: currentHighlight.rawValue + 1) {
+                  currentHighlight = next
+                }
               }
             }
           }
@@ -123,9 +125,12 @@ struct ShowCaseRoot: ViewModifier {
 extension ShowCaseRoot {
   private func toggleShowTitle(withDelay delay: Double, to value: Bool) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-      withAnimation {
-        showTitle = value
-      }
+      withAnimation { showTitle = value }
     }
+  }
+  
+  private func centeredMap() {
+    // Centered the Map Logic here
+    // withAnimation { primeViewModel.centerMapOnUserLocationButtonClicked() }
   }
 }

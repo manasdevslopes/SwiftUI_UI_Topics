@@ -21,10 +21,10 @@ struct MainButtonsView: View {
         MainButtonView(sfSymbol: "line.3.horizontal", action: {
           primeViewModel.showMenu()
         })
-        .showCase(order: 8, title: LocalizationManager.shared.localizedString(forKey: "account_management"), subtitle: LocalizationManager.shared.localizedString(forKey: "to_manage_user_data"), cornerRadius: 45, style: .continuous)
+        .showCase(step: .step9)
         Spacer()
         MainButtonView(sfSymbol: "line.3.horizontal.decrease", action: { })
-          .showCase(order: 1, title: LocalizationManager.shared.localizedString(forKey: "filter_your_search"), subtitle: LocalizationManager.shared.localizedString(forKey: "quickly_find_charge_points"), cornerRadius: 45, style: .continuous)
+          .showCase(step: .step2)
       }
       .padding(.top, 18)
       .padding(.bottom, 16)
@@ -32,7 +32,7 @@ struct MainButtonsView: View {
       HStack {
         Spacer()
         MainButtonView(sfSymbol: "heart", action: { })
-          .showCase(order: 3, title: LocalizationManager.shared.localizedString(forKey: "fav"), subtitle: LocalizationManager.shared.localizedString(forKey: "fav_stations"), cornerRadius: 45, style: .continuous)
+          .showCase(step: .step4)
       }
       Spacer()
       
@@ -43,7 +43,7 @@ struct MainButtonsView: View {
             print("info pressed")
             displayShowCase = true
           })
-            .showCase(order: 2, title: LocalizationManager.shared.localizedString(forKey: "scan_to_start_charging"), subtitle: LocalizationManager.shared.localizedString(forKey: "scan_qr_code"), cornerRadius: 45, style: .continuous)
+          .showCase(step: .step3)
         }
         .padding(.trailing, 4)
         
@@ -66,12 +66,12 @@ struct MainButtonsView: View {
               }, backgroundSize: 35, showCircle: primeViewModel.selectedStationType == .fuel)
             }
           }
-          .showCase(order: 0, title: LocalizationManager.shared.localizedString(forKey: "charging_or_fueling"), subtitle: LocalizationManager.shared.localizedString(forKey: "choose_btw_charging_or_fueling"), cornerRadius: 10, style: .continuous)
+          .showCase(step: .step1, cornerRadius: 10)
         }
         
         HStack {
           MainButtonView(sfSymbol: "info", action: { })
-            .showCase(order: 4, title: LocalizationManager.shared.localizedString(forKey: "map_legends"), subtitle: LocalizationManager.shared.localizedString(forKey: "check_map_legend"), cornerRadius: 45, style: .continuous)
+            .showCase(step: .step5)
           Spacer()
         }
       }

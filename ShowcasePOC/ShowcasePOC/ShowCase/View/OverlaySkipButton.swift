@@ -16,7 +16,7 @@ struct OverlaySkipButton: View {
   var onFinished: () -> Void
     var body: some View {
       VStack {
-        Text("Skip tutorial")
+        Text(LocalizationManager.shared.localizedString(forKey: "skip_tutorial"))
           .applyCommonStyle(font: .system(size: 11))
           .multilineTextAlignment(.center)
           .kerning(0.1)

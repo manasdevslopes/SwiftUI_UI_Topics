@@ -14,9 +14,7 @@ import SwiftUI
 struct Highlight: Identifiable, Equatable {
   var id: UUID = .init()
   var anchor: Anchor<CGRect>
-  var order: Int
-  var title: String
-  var subtitle: String
+  var step: TutorialStep
   var cornerRadius: CGFloat
   var style: RoundedCornerStyle = .continuous
   var scale: CGFloat = 1

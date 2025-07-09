@@ -14,25 +14,22 @@ import SwiftUI
 extension View {
   /// Custom Showcase View Extension
   @ViewBuilder
-  func showCase(order: Int, title: String, subtitle: String, cornerRadius: CGFloat, style: RoundedCornerStyle = .continuous, scale: CGFloat = 1) -> some View {
+  func showCase(step: TutorialStep, cornerRadius: CGFloat = 45, style: RoundedCornerStyle = .continuous, scale: CGFloat = 1) -> some View {
     self
     /// Storing it in Anchor Preferences
       .anchorPreference(key: HighlightAnchorKey.self, value: .bounds) { anchor in
-        let highlight = Highlight(anchor: anchor, order: order, title: title, subtitle: subtitle, cornerRadius: cornerRadius, style: style, scale: scale)
-        return [order : highlight]
+        let highlight = Highlight(anchor: anchor, step: step, cornerRadius: cornerRadius, style: style, scale: scale)
+        return [step.rawValue : highlight]
       }
   }
   
   /// Custom View modifier for Inner/Reverse Mask
   @ViewBuilder
   func reverseMask<Content: View>(alignment: Alignment = .topLeading, @ViewBuilder content: @escaping () -> Content) -> some View {
-    self
-      .mask {
-        Rectangle()
-          .overlay(alignment: .topLeading) {
-            content()
-              .blendMode(.destinationOut)
-          }
+    self.mask {
+      Rectangle().overlay(alignment: .topLeading) {
+        content().blendMode(.destinationOut)
       }
+    }
   }
 }

@@ -34,7 +34,7 @@ struct MenuView: View {
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
               Label(LocalizationManager.shared.localizedString(forKey: "my_vehicle"), systemImage: "car")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
-                .showCase(order: 9, title: LocalizationManager.shared.localizedString(forKey: "my_vehicle"), subtitle: LocalizationManager.shared.localizedString(forKey: "add_your_vehicle"), cornerRadius: 0, style: .continuous)
+                .showCase(step: .step10, cornerRadius: 0)
               Label(LocalizationManager.shared.localizedString(forKey: "my_fuel_and_charge_cards"), systemImage: "person.crop.square.filled.and.at.rectangle.fill")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
             }
