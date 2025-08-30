@@ -52,7 +52,7 @@ struct HomeView: View {
         }
         
         Tab(LocalizationManager.shared.localizedString(forKey: "profile"), systemImage: "person.circle.fill") {
-          Text(LocalizationManager.shared.localizedString(forKey: "profile"))
+          ProfileView()
         }
       }
       .overlay(alignment: .bottom) {

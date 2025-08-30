@@ -63,6 +63,40 @@
         }
       }
     },
+    "location_details_connectors_disclaimer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn Sie nur Standorte für Lkw anzeigen möchten, ${filter_link}"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you want to view truck-only sites, ${filter_link}"
+          }
+        }
+      }
+    },
+    "location_details_filter_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte diesen Filter verwenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "please use this filter"
+          }
+        }
+      }
+    },
     "map" : {
       "extractionState" : "manual",
       "localizations" : {
