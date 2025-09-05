@@ -19,6 +19,7 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
   var fontSize: CGFloat
   var textColor: UIColor
   var linkColor: UIColor
+  @Binding var dynamicHeight: CGFloat
   var onTap: (String) -> Void
   
   func makeUIView(context: Context) -> UITextView {
@@ -29,6 +30,8 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     textView.isScrollEnabled = false
     textView.delegate = context.coordinator
     textView.textContainer.lineFragmentPadding = 0
+    textView.textContainerInset = .zero
+    textView.textAlignment = .left
     textView.backgroundColor = .clear
     textView.linkTextAttributes = [
       .foregroundColor: linkColor,
@@ -47,6 +50,7 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     // 2. Base style for all text
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = 4
+    paragraphStyle.alignment = .left
     
     let baseAttributes: [NSAttributedString.Key: Any] = [
       .font: UIFont.systemFont(ofSize: fontSize),
@@ -68,6 +72,14 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     }
     
     uiTextView.attributedText = attributed
+    
+    // Measure and update height dynamically
+    DispatchQueue.main.async {
+      let newSize = uiTextView.sizeThatFits(CGSize(width: uiTextView.bounds.width, height: .greatestFiniteMagnitude))
+      if abs(self.dynamicHeight - newSize.height) > 1 {
+        self.dynamicHeight = newSize.height
+      }
+    }
   }
   
   func makeCoordinator() -> Coordinator {

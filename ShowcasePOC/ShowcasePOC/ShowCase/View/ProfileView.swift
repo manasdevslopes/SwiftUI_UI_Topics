@@ -13,6 +13,7 @@ import SwiftUI
 
 struct ProfileView: View {
   @State private var showSheet: Bool = false
+  @State private var textHeight: CGFloat = .zero
   
   var body: some View {
     VStack {
@@ -23,9 +24,11 @@ struct ProfileView: View {
         tappableText: LocalizationManager.shared.localizedString(forKey: "location_details_filter_placeholder"),
         fontSize: 14,
         textColor: UIColor.darkGray,
-        linkColor: UIColor.green) { _ in
+        linkColor: UIColor.green,
+        dynamicHeight: $textHeight) { _ in
           showSheet = true
         }
+        .frame(height: textHeight)
     }
     .padding()
     .sheet(isPresented: $showSheet) {
