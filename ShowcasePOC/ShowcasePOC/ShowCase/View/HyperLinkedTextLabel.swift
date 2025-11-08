@@ -71,11 +71,14 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
       ], range: range)
     }
     
-    uiTextView.attributedText = attributed
-    
     // Measure and update height dynamically
     DispatchQueue.main.async {
-      let newSize = uiTextView.sizeThatFits(CGSize(width: uiTextView.bounds.width, height: .greatestFiniteMagnitude))
+      // Ensure layout has a valid width
+      uiTextView.attributedText = attributed
+      uiTextView.layoutIfNeeded()
+      
+      let fittingWidth  = uiTextView.bounds.width > 0 ? uiTextView.bounds.width : UIScreen.main.bounds.width - 80
+      let newSize = uiTextView.sizeThatFits(CGSize(width: fittingWidth, height: .greatestFiniteMagnitude))
       if abs(self.dynamicHeight - newSize.height) > 1 {
         self.dynamicHeight = newSize.height
       }
