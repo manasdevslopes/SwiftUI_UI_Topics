@@ -14,6 +14,7 @@ import SwiftUI
 @main
 struct ShowcasePOCApp: App {
   @StateObject var primeViewModel = PrimeViewModel()
+  @StateObject var menuViewModel = MenuViewModel.shared
   
     var body: some Scene {
         WindowGroup {

@@ -13,6 +13,7 @@ import SwiftUI
 
 struct MenuView: View {
   @EnvironmentObject var primeViewModel: PrimeViewModel
+  @ObservedObject var menuViewModel = MenuViewModel.shared
   
   var body: some View {
     VStack {
@@ -30,13 +31,33 @@ struct MenuView: View {
             VStack(alignment: .leading) {
               Label(LocalizationManager.shared.localizedString(forKey: "my_account"), systemImage: "person")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
+                .contentShape(.rect)
+                .onTapGesture {
+                  menuViewModel.navigateToUserProfile()
+                  primeViewModel.hideMenu()
+                }
               Label(LocalizationManager.shared.localizedString(forKey: "charging_history"), systemImage: "ev.charger")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
+                .contentShape(.rect)
+                .onTapGesture {
+                  menuViewModel.navigateToChargingHistory()
+                  primeViewModel.hideMenu()
+                }
               Label(LocalizationManager.shared.localizedString(forKey: "my_vehicle"), systemImage: "car")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
                 .showCase(step: .step10, cornerRadius: 0)
+                .contentShape(.rect)
+                .onTapGesture {
+                  menuViewModel.navigateToVehicle()
+                  primeViewModel.hideMenu()
+                }
               Label(LocalizationManager.shared.localizedString(forKey: "my_fuel_and_charge_cards"), systemImage: "person.crop.square.filled.and.at.rectangle.fill")
                 .frame(maxWidth: .infinity, minHeight: 48.0, idealHeight: 55.0, maxHeight: 55.0, alignment: .leading).padding(.leading)
+                .contentShape(.rect)
+                .onTapGesture {
+                  menuViewModel.navigateToCards()
+                  primeViewModel.hideMenu()
+                }
             }
           }
         }

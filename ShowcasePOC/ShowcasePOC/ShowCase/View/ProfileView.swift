@@ -13,20 +13,27 @@ import SwiftUI
 
 struct ProfileView: View {
   @State private var showSheet: Bool = false
+  @State private var showAnotherSheet: Bool = false
   @State private var textHeight: CGFloat = .zero
   
   var body: some View {
     VStack {
       Text(LocalizationManager.shared.localizedString(forKey: "profile"))
       HyperLinkedTextLabel(
-        fullTextKey: LocalizationManager.shared.localizedString(forKey: "location_details_connectors_disclaimer"),
-        placeholder: "${filter_link}",
-        tappableText: LocalizationManager.shared.localizedString(forKey: "location_details_filter_placeholder"),
+        fullTextKey: "welcome_text",
+        placeholders: ["${common_terms_of_use}", "${common_privacy_policy}"],
+        tappableTextKeys: ["common_terms_of_use", "common_privacy_policy"],
         fontSize: 14,
         textColor: UIColor.darkGray,
         linkColor: UIColor.green,
-        dynamicHeight: $textHeight) { _ in
-          showSheet = true
+        dynamicHeight: $textHeight) { val, str in
+          switch val {
+            case 0:
+              showSheet = true
+            case 1:
+              showAnotherSheet = true
+            default: debugPrint("Tapped link: \(str)")
+          }
         }
         .frame(height: textHeight)
     }
@@ -43,6 +50,12 @@ struct ProfileView: View {
             .background(Color(.systemBackground).opacity(0.8)).clipShape(Circle())
         }.padding()
       }
+    }
+    .sheet(isPresented: $showAnotherSheet) {
+      Text(LocalizationManager.shared.localizedString(forKey: "finish"))
+        .onTapGesture {
+          self.showAnotherSheet.toggle()
+        }
     }
   }
 }

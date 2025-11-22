@@ -11,7 +11,8 @@
 import MapKit
 import SwiftUI
 
-struct MapView: View {  
+struct MapView: View {
+  @ObservedObject var menuViewModel = MenuViewModel.shared
   @State private var cameraPosition = MapCameraPosition.region(
     MKCoordinateRegion(
       center: CLLocationCoordinate2D(
@@ -33,6 +34,11 @@ struct MapView: View {
           }
           .frame(maxHeight: .infinity)
         }
+      }
+    }
+    .fullScreenCover(isPresented: $menuViewModel.isShowingSelectedMenuOptionView) {
+      if let selectedMenuOption = menuViewModel.selectedMenuOptionView {
+        selectedMenuOption
       }
     }
   }

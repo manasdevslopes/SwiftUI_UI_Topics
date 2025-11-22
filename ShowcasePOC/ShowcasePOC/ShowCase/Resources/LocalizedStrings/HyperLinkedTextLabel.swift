@@ -12,15 +12,15 @@ import SwiftUI
 import UIKit
 
 struct HyperLinkedTextLabel: UIViewRepresentable {
-  
+  // MARK: - Pass localization keys instead of localized strings
   var fullTextKey: String
-  var placeholder: String
-  var tappableText: String
+  var placeholders: [String]
+  var tappableTextKeys: [String]
   var fontSize: CGFloat
   var textColor: UIColor
   var linkColor: UIColor
   @Binding var dynamicHeight: CGFloat
-  var onTap: (String) -> Void
+  var onTap: (Int, String) -> Void
   
   func makeUIView(context: Context) -> UITextView {
     let textView = UITextView()
@@ -43,14 +43,21 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
   }
   
   func updateUIView(_ uiTextView: UITextView, context: Context) {
-    let fullTextTemplate = fullTextKey
-    // 1. Replace placeholder with tappable text
-    let fullText = fullTextTemplate.replacingOccurrences(of: placeholder, with: tappableText)
+    // Localize the main text and tappable texts automatically
+    let localizedFullText = LocalizationManager.shared.localizedString(forKey: fullTextKey)
+    let localizedTappableTexts = tappableTextKeys.map { LocalizationManager.shared.localizedString(forKey: $0) }
     
-    // 2. Base style for all text
+    // Replace placeholders with tappable texts
+    var fullText = localizedFullText
+    for (index, placeholder) in placeholders.enumerated() where index < localizedTappableTexts.count {
+      fullText = fullText.replacingOccurrences(of: placeholder, with: localizedTappableTexts[index])
+    }
+    
+    // Base style
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = 4
     paragraphStyle.alignment = .left
+    paragraphStyle.lineBreakMode = .byWordWrapping
     
     let baseAttributes: [NSAttributedString.Key: Any] = [
       .font: UIFont.systemFont(ofSize: fontSize),
@@ -60,15 +67,18 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     
     let attributed = NSMutableAttributedString(string: fullText, attributes: baseAttributes)
     
-    // 3. Style tappable text with green + underline + link
-    let range = (fullText as NSString).range(of: tappableText)
-    if range.location != NSNotFound {
-      attributed.addAttributes([
-        .link: "https://\(tappableText.replacingOccurrences(of: " ", with: "_"))",
-        .foregroundColor: linkColor,
-        .underlineStyle: NSUnderlineStyle.single.rawValue,
-        .underlineColor: linkColor
-      ], range: range)
+    // Style each tappable text with green + underline + own unique link
+    for (index, tappable) in localizedTappableTexts.enumerated() {
+      let range = (fullText as NSString).range(of: tappable)
+      if range.location != NSNotFound {
+        attributed.addAttributes([
+          // Create some kind of deeplink URL so that which one was tapped
+          .link: "action://\(index)",
+          .foregroundColor: linkColor,
+          .underlineStyle: NSUnderlineStyle.single.rawValue,
+          .underlineColor: linkColor
+        ], range: range)
+      }
     }
     
     // Measure and update height dynamically
@@ -77,7 +87,7 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
       uiTextView.attributedText = attributed
       uiTextView.layoutIfNeeded()
       
-      let fittingWidth  = uiTextView.bounds.width > 0 ? uiTextView.bounds.width : UIScreen.main.bounds.width - 80
+      let fittingWidth = uiTextView.bounds.width > 0 ? uiTextView.bounds.width : UIScreen.main.bounds.width - 80
       let newSize = uiTextView.sizeThatFits(CGSize(width: fittingWidth, height: .greatestFiniteMagnitude))
       if abs(self.dynamicHeight - newSize.height) > 1 {
         self.dynamicHeight = newSize.height
@@ -97,18 +107,17 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     }
     
     // MARK: - Shared link handling logic
-    private func handleLink(_ url: URL) -> Bool {
-      let linkText = url.absoluteString.replacingOccurrences(of: "https://", with: "")
-      if parent.tappableText.replacingOccurrences(of: " ", with: "_") == linkText {
-        parent.onTap(parent.tappableText)
-        return false   // prevent system default handling
-      }
-      return true
-    }
-    
     // MARK: - iOS 16 and below (deprecated in iOS 17)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, /*interaction: UITextItemInteraction*/) -> Bool {
-      return handleLink(URL)
+      // URL format: "action://0", "action://1", etc.
+      if URL.scheme == "action", let index = Int(URL.host ?? "") {
+        if index < parent.tappableTextKeys.count {
+          let tappedText = LocalizationManager.shared.localizedString(forKey: parent.tappableTextKeys[index])
+          parent.onTap(index, tappedText)
+        }
+        return false
+      }
+      return true
     }
   }
 }
