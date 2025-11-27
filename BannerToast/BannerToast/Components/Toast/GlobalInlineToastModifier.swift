@@ -85,14 +85,26 @@ struct GlobalInlineToastModifier: ViewModifier {
     .animation(.easeOut, value: manager.isPresented)
   }
   
+  private var toastView: AnyView {
+    if manager.toastType == .offsetToast {
+      return AnyView(offsetToast)
+    } else {
+      return AnyView(scaleToast)
+    }
+  }
+  
   func body(content: Content) -> some View {
     ZStack {
       content
-      if manager.toastType == .offsetToast {
-        offsetToast
-      } else {
-        scaleToast
-      }
+      
+      toastView
+        .gesture(
+          DragGesture().onEnded { value in
+            if abs(value.translation.height) > 20 {
+              manager.hide()
+            }
+          }
+        )
     }
   }
 }
