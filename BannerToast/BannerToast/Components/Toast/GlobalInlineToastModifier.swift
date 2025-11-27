@@ -35,9 +35,10 @@ struct GlobalInlineToastModifier: ViewModifier {
           textColor: data.textColor,
           linkColor: data.linkColor,
           showBorder: data.showBorder,
-          onHyperlinkTap: data.onHyperlinkTap) {
+          onHyperlinkTap: data.onHyperlinkTap,
+          onDismiss: data.onDismiss == nil ? nil : {
             manager.hide()
-          } leadingContent: {
+          }) {
             data.leadingContent
           }
           .padding(.horizontal, 4)
@@ -68,9 +69,10 @@ struct GlobalInlineToastModifier: ViewModifier {
           textColor: data.textColor,
           linkColor: data.linkColor,
           showBorder: data.showBorder,
-          onHyperlinkTap: data.onHyperlinkTap) {
+          onHyperlinkTap: data.onHyperlinkTap,
+          onDismiss: data.onDismiss == nil ? nil : {
             manager.hide()
-          } leadingContent: {
+          }) {
             data.leadingContent
           }
           .padding(.horizontal, 4)

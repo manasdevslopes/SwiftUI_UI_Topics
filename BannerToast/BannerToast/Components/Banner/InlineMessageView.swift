@@ -103,12 +103,12 @@ struct InlineMessageView<T: View>: View {
       
       Spacer()
       
-      if let onDismiss {
+      if onDismiss != nil {
         VStack {
           Image(systemName: "xmark").resizable().frame(width: 10, height: 10).foregroundStyle(.primary)
         }
         .frame(width: 24, height: 24).contentShape(.rect)
-        .onTapGesture { onDismiss() }
+        .onTapGesture { onDismiss?() }
       }
     }
     .padding(.leading, 12).padding(.trailing, 20).padding(.vertical, 8)

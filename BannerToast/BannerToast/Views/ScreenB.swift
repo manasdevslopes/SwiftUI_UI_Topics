@@ -27,9 +27,9 @@ struct ScreenB: View {
       // 1. SUCCESS (with icon, with border, no dismiss, no hyperlink tap)
       Button("Show SUCCESS Toast") {
         // makeToastWithLeadingNoDismiss
-        let toast = makeToast(type: .success, hyperlinkText: textBasic, showBorder: true) {
+        let toast = makeToastWithLeading(type: .success, hyperlinkText: textBasic, showBorder: true, leadingContent: {
           Image(systemName: "checkmark.seal.fill").resizable().frame(width: 24, height: 24)
-        }
+        })
         
         showToastAndGoBack(toast)
       }
@@ -37,9 +37,9 @@ struct ScreenB: View {
       // 2. INFO (with icon, without border, no dismiss, no hyperlink tap)
       Button("Show INFO Toast") {
         // makeToastWithLeadingNoDismiss
-        let toast = makeToast(type: .info, hyperlinkText: textBasic, fontSize: 12, textColor: UIColor.darkText, showBorder: false) {
+        let toast = makeToastWithLeading(type: .info, hyperlinkText: textBasic, fontSize: 12, textColor: UIColor.darkText, showBorder: false, leadingContent: {
           Image(systemName: "info.circle.fill").resizable().frame(width: 24, height: 24)
-        }
+        })
         showToastAndGoBack(toast)
       }
       
@@ -58,7 +58,7 @@ struct ScreenB: View {
       // 4. WARNING (with hyperlink + dismiss + icon)
       Button("Show WARNING Toast 2") {
         // makeToastWithLeadingAndDismiss
-        let toast = makeToast(type: .warning, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
+        let toast = makeToastWithLeading(type: .warning, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
           print("Hyperlinked text tapped")
         } onDismiss: {
           print("Dismiss tapped")
@@ -72,7 +72,7 @@ struct ScreenB: View {
       // 4. ERROR (with hyperlink + dismiss + icon)
       Button("Show ERROR Toast") {
         // makeToastWithLeadingAndDismiss
-        let toast = makeToast(type: .error, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
+        let toast = makeToastWithLeading(type: .error, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
           print("Hyperlinked text tapped")
         } onDismiss: {
           print("Dismiss tapped")
@@ -86,7 +86,7 @@ struct ScreenB: View {
       // 5. NEUTRAL (with hyperlink + dismiss + icon)
       Button("Show NEUTRAL Toast") {
         // makeToastWithLeadingAndDismiss
-        let toast = makeToast(type: .neutral, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
+        let toast = makeToastWithLeading(type: .neutral, hyperlinkText: textClickable, placeholderText: "${please_click_here}", tappableText: "Please click here", showBorder: true) {
           print("Hyperlinked text tapped")
         } onDismiss: {
           print("Dismiss tapped")
