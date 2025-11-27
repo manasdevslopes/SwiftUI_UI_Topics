@@ -21,8 +21,6 @@ struct BannerToastApp: App {
 }
 
 
-// 3 things -
+// 2 things -
 // 1. Swipe - to hide toast
 // 2. Hide - Hide Cross Icon
-// 3. Animation - Animate the toast while showing and hiding it.
-

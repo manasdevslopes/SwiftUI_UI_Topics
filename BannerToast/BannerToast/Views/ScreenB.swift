@@ -102,11 +102,10 @@ struct ScreenB: View {
   private func showToastAndGoBack<T: View>(_ toast: InlineToastData<T>) {
     // InlineToastManager.shared.show(alignment: .bottom, toastType: .offsetToast, toast, duration: 5)
     InlineToastManager.shared.show(alignment: .top, toastType: .offsetToast, toast, duration: 5)
-    // InlineToastManager.shared.show(toast, duration: 5)
     
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//      dismiss()
-//    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+      dismiss()
+    }
   }
 }
 
