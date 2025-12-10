@@ -100,6 +100,8 @@ struct GlobalInlineToastModifier: ViewModifier {
       content
       
       toastView
+        .padding(.horizontal, 30)
+        .shadow(color: .black.opacity(0.25), radius: 10, x: 0, y: 20)
         .gesture(
           DragGesture().onEnded { value in
             if abs(value.translation.height) > 20 {

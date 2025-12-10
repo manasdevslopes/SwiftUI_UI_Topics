@@ -15,12 +15,15 @@ import SwiftUI
 struct BannerToastApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().globalInlineToast()
         }
     }
 }
 
-
-// 2 things -
-// 1. Swipe - to hide toast
-// 2. Hide - Hide Cross Icon
+// MARK: - .globalInlineToast()
+/* It has to be used on Root File, also add this when in modals like sheet , fullscreen etc... */
+/*.fullScreenCover(isPresented: $states) {
+    VStack {}
+      .globalInlineToast()
+  }
+*/

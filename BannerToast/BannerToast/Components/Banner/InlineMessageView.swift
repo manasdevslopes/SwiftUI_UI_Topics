@@ -82,7 +82,7 @@ struct InlineMessageView<T: View>: View {
   @State private var textHeight: CGFloat = .zero
   
   var body: some View {
-    HStack(alignment: .top) {
+    HStack(alignment: textHeight <= fontSize * 1.5 ? .center : .top) {
       if hasLeadingContent {
         leadingContent.frame(width: 24, height: 24, alignment: .center)
       }
@@ -111,7 +111,7 @@ struct InlineMessageView<T: View>: View {
         .onTapGesture { onDismiss?() }
       }
     }
-    .padding(.leading, 12).padding(.trailing, 20).padding(.vertical, 8)
+    .padding(.leading, 12).padding(.trailing, 12).padding(.vertical, 12)
     .background(type.color)
     .if(showBorder) {
       $0.overlay {

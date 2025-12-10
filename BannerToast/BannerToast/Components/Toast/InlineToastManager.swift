@@ -22,6 +22,8 @@ final class InlineToastManager {
   var data: AnyInlineToastData?
   private var dismissWorkItem: DispatchWorkItem?
   
+  private init() { }
+  
   func show<T: View>(alignment: VerticalAlignment = .bottom, toastType: ToastType = .scaleToast, _ data: InlineToastData<T>, duration: Double = 5) {
     // Cancel any existing timer
     dismissWorkItem?.cancel()

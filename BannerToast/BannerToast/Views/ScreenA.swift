@@ -28,7 +28,6 @@ struct ScreenA: View {
         ScreenB()
       }
     }
-    .globalInlineToast()
   }
 }
 
