@@ -12,6 +12,8 @@ import SwiftUI
 import UIKit
 
 struct HyperLinkedTextLabel: UIViewRepresentable {
+  @Environment(\.locale) private var locale
+  
   // MARK: - Pass localization keys instead of localized strings
   var fullTextKey: String
   var placeholders: [String]
@@ -19,8 +21,34 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
   var fontSize: CGFloat
   var textColor: UIColor
   var linkColor: UIColor
+  var textAlignment: NSTextAlignment = .left
+
+  // MARK: - Fonts Configurations
+  var baseTextShantellSans: ShantellSansFont?
+  var baseTextCorinthiaFont: CorinthiaFont?
+  var tappableTextShantellSans: ShantellSansFont?
+  var tappableTextCorinthiaFont: CorinthiaFont?
+  
   @Binding var dynamicHeight: CGFloat
   var onTap: (Int, String) -> Void
+  
+  // MARK: - Helper function to get UIFont
+  private func getUIFont(shantellSansFont: ShantellSansFont?, corinthiaFont: CorinthiaFont?, size: CGFloat) -> UIFont {
+    if isAralScheme {
+      // Use Corinthia
+      if let corinthia = corinthiaFont, let font = UIFont(name: corinthia.rawValue, size: size) {
+        return font
+      }
+    } else {
+      // Use ShantellSans
+      if let shantell = shantellSansFont, let font = UIFont(name: shantell.rawValue, size: size) {
+        return font
+      }
+    }
+    
+    // Fallback
+    return UIFont.systemFont(ofSize: size)
+  }
   
   func makeUIView(context: Context) -> UITextView {
     let textView = UITextView()
@@ -28,10 +56,12 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     textView.isEditable = false
     textView.isSelectable = true
     textView.isScrollEnabled = false
+    textView.dataDetectorTypes = []
+    textView.isUserInteractionEnabled = true
     textView.delegate = context.coordinator
     textView.textContainer.lineFragmentPadding = 0
     textView.textContainerInset = .zero
-    textView.textAlignment = .left
+    textView.textAlignment = textAlignment
     textView.backgroundColor = .clear
     textView.linkTextAttributes = [
       .foregroundColor: linkColor,
@@ -44,8 +74,8 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
   
   func updateUIView(_ uiTextView: UITextView, context: Context) {
     // Localize the main text and tappable texts automatically
-    let localizedFullText = LocalizationManager.shared.localizedString(forKey: fullTextKey)
-    let localizedTappableTexts = tappableTextKeys.map { LocalizationManager.shared.localizedString(forKey: $0) }
+    let localizedFullText = LocalizationManager.shared.localizedString(forKey: fullTextKey, locale: locale)
+    let localizedTappableTexts = tappableTextKeys.map { LocalizationManager.shared.localizedString(forKey: $0, locale: locale) }
     
     // Replace placeholders with tappable texts
     var fullText = localizedFullText
@@ -56,16 +86,19 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     // Base style
     let paragraphStyle = NSMutableParagraphStyle()
     paragraphStyle.lineSpacing = 4
-    paragraphStyle.alignment = .left
+    paragraphStyle.alignment = textAlignment
     paragraphStyle.lineBreakMode = .byWordWrapping
     
+    let baseTextFont = getUIFont(shantellSansFont: baseTextShantellSans, corinthiaFont: baseTextCorinthiaFont, size: fontSize)
     let baseAttributes: [NSAttributedString.Key: Any] = [
-      .font: UIFont.systemFont(ofSize: fontSize),
+      .font: baseTextFont,
       .foregroundColor: textColor,
       .paragraphStyle: paragraphStyle
     ]
     
     let attributed = NSMutableAttributedString(string: fullText, attributes: baseAttributes)
+    
+    let tappableTextFont = getUIFont(shantellSansFont: tappableTextShantellSans, corinthiaFont: tappableTextCorinthiaFont, size: fontSize)
     
     // Style each tappable text with green + underline + own unique link
     for (index, tappable) in localizedTappableTexts.enumerated() {
@@ -74,6 +107,7 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
         attributed.addAttributes([
           // Create some kind of deeplink URL so that which one was tapped
           .link: "action://\(index)",
+          .font: tappableTextFont,
           .foregroundColor: linkColor,
           .underlineStyle: NSUnderlineStyle.single.rawValue,
           .underlineColor: linkColor
@@ -81,10 +115,14 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
       }
     }
     
+    // Update text alignment if needed
+    uiTextView.textAlignment = textAlignment
+    
+    uiTextView.attributedText = attributed
+    
     // Measure and update height dynamically
     DispatchQueue.main.async {
       // Ensure layout has a valid width
-      uiTextView.attributedText = attributed
       uiTextView.layoutIfNeeded()
       
       let fittingWidth = uiTextView.bounds.width > 0 ? uiTextView.bounds.width : UIScreen.main.bounds.width - 80
@@ -109,10 +147,14 @@ struct HyperLinkedTextLabel: UIViewRepresentable {
     // MARK: - Shared link handling logic
     // MARK: - iOS 16 and below (deprecated in iOS 17)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, /*interaction: UITextItemInteraction*/) -> Bool {
+      return handleURLInteraction(URL)
+    }
+    
+    private func handleURLInteraction(_ url: URL) -> Bool {
       // URL format: "action://0", "action://1", etc.
-      if URL.scheme == "action", let index = Int(URL.host ?? "") {
+      if url.scheme == "action", let index = Int(url.host ?? "") {
         if index < parent.tappableTextKeys.count {
-          let tappedText = LocalizationManager.shared.localizedString(forKey: parent.tappableTextKeys[index])
+          let tappedText = LocalizationManager.shared.localizedString(forKey: parent.tappableTextKeys[index], locale: parent.locale)
           parent.onTap(index, tappedText)
         }
         return false
