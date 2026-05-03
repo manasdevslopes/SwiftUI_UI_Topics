@@ -97,10 +97,7 @@ struct ProfileView: View {
       }
     }
     .sheet(isPresented: $showAnotherSheet) {
-      Text(LocalizationManager.shared.localizedString(forKey: "finish"))
-        .onTapGesture {
-          self.showAnotherSheet.toggle()
-        }
+      ScrollViewReaderView(showAnotherSheet: $showAnotherSheet)
     }
   }
 }
