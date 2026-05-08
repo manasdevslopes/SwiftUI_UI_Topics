@@ -12,11 +12,14 @@ import MapKit
 import SwiftUI
 
 struct ProfileView: View {
+  @Environment(\.locale) private var locale
   @State private var showSheet: Bool = false
   @State private var showAnotherSheet: Bool = false
   @State private var textHeight: CGFloat = .zero
   @State private var textHeight1: CGFloat = .zero
-
+  
+  private let num: Double = 56128234.567
+  private let decimal: Int = 2
   
   var body: some View {
     VStack {
@@ -79,6 +82,10 @@ struct ProfileView: View {
           }
         }
         .frame(height: textHeight1)
+      
+      Divider().padding(.vertical, 16)
+      
+      LText(key: "Format -> %@", arguments: LocalizationManager.shared.numberFormatted(num, decimals: decimal, locale: locale))
       
       Spacer()
     }

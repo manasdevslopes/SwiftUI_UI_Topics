@@ -11,6 +11,11 @@
 
 import SwiftUI
 
+enum EnvironmentConf {
+  static let userPreferredLanguageCode: String? = {
+    Bundle.main.preferredLocalizations[0]
+  }()
+}
 class LocalizationManager {
   static let shared = LocalizationManager()
   
@@ -57,6 +62,25 @@ class LocalizationManager {
     let format = localizedString(forKey: key, locale: locale)
     return String(format: format, locale: locale, arguments: arguments)
   }
+  
+  /// Localized Number system
+  func numberFormatted(_ num: Double, decimals: Int = 1, locale: Locale? = nil) -> String {
+    let resolvedLocale = locale ?? currentLocale
+    
+    let numberFormatter = NumberFormatter()
+    numberFormatter.numberStyle = .decimal
+    numberFormatter.minimumFractionDigits = decimals
+    numberFormatter.maximumFractionDigits = decimals
+    numberFormatter.locale = resolvedLocale
+    
+    let formatterNumber = "\(numberFormatter.string(from: NSNumber(value: num.roundUp(toPlaces: decimals))) ?? "0.00")"
+    return formatterNumber
+  }
+  
+  private var currentLocale: Locale {
+    guard let langCode = EnvironmentConf.userPreferredLanguageCode else { return .en }
+    return Locale(identifier: langCode)
+  }
 }
 
 extension Locale {
@@ -67,4 +91,18 @@ extension Locale {
   // German
   static let de = Locale(identifier: "de")
   
+}
+
+extension Double {
+  func roundUp(toPlaces places: Int) -> Double {
+    /**
+     num = 56128234.567 and places = 2
+     10² = 100
+     56128234.567 * 100 = 5612823456.7
+     5612823456.7.rounded(.up) → 5612823457
+     5612823457 / 100 = 56128234.57
+     */
+    let divisor = pow(10.0, Double(places))
+    return (self * divisor).rounded(.up) / divisor
+  }
 }
