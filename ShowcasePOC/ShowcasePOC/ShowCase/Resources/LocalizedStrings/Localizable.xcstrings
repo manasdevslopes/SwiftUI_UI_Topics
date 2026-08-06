@@ -50,6 +50,40 @@
         }
       }
     },
+    "charging_session_summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hallo %@, lhre Ladesitzung an der %@ ist von %@ bis %@ geplant. Voraussichtlich werden %@ kWh geladen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello %@, your charging session at %@ is scheduled from %@ to %@. Estimated energy to be delivered: %@ kWh. "
+          }
+        }
+      }
+    },
+    "charging_station_name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BP Pulse Station"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BP Pulse Station"
+          }
+        }
+      }
+    },
     "common_privacy_policy" : {
       "extractionState" : "manual",
       "localizations" : {

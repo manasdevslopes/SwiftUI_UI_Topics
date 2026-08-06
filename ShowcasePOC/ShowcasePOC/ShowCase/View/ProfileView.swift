@@ -92,7 +92,7 @@ struct ProfileView: View {
         
         LText("maintenance_window", mixedArgs: [
           .timestamp(startTime), .timestamp(endTime),
-          .string("ShowcasePOC")
+          .string("Showcase POC")
         ])
         
         LText("back_online_around_time", mixedArgs: [.timestamp(endTime)])
@@ -100,7 +100,14 @@ struct ProfileView: View {
         LText("welcome_message", args: userName)
         
         LText("welcome_user")
-        
+        Divider()
+        LText("charging_session_summary", mixedArgs: [
+          .string("Manas"),
+          .localizedKey("charging_station_name"),
+          .timestamp(startTime),
+          .timestamp(endTime),
+          .localizedNumber(55.748, decimals: 2)
+        ])
         Spacer()
       }
       .padding()

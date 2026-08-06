@@ -11,6 +11,7 @@ import SwiftUI
 
 enum LTextArg {
   case string(CVarArg)
+  case localizedKey(String)
   case timestamp(Double)
   case localizedNumber(Double, decimals: Int)
 }
@@ -51,6 +52,7 @@ struct LText: View {
     let formatted: [CVarArg] = resolvedArgs.map { arg in
       switch arg {
         case .string(let value): return value
+        case .localizedKey(let key): return LocalizationManager.shared.localizedString(forKey: key, locale: locale) as CVarArg
         case .timestamp(let value):
           return LocaleHelper.formatTimeStamp(value, locale: locale) ?? "" as CVarArg
         case .localizedNumber(let value, let decimal):
